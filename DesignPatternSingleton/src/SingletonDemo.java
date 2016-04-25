@@ -9,6 +9,6 @@ public class SingletonDemo {
         //show the message
         object.printMessage("Hello Sean!");
 
-        object.printMessage("Hello Sean!");
+        object.printMessage("Hello yet again Sean!");
     }
 }

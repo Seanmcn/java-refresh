@@ -39,20 +39,43 @@ public class LinkedList<AnyType> {
         return last.data;
     }
 
-    public Object get(int index)
-    {
-        if(index <= 0)
+    public Node get(int index) {
+        if (index <= 0)
             return null;
 
-        Node current = head;
-        for(int i = 1; i < index; i++)
-        {
-            if(head.next == null)
+        Node current = this.head;
+        for (int i = 1; i < index; i++) {
+            if (current.next == null) {
                 return null;
-
+            }
             current = current.next;
         }
+        return current;
+    }
+
+    public Object getData(int index) {
+        Node current = this.get(index);
         return current.data;
+    }
+
+    public void remove(int index) {
+        if (index <= 0) {
+            return;
+        }
+
+        Node current = this.head;
+        Node remove = this.get(index);
+
+        for (int i = 1; i < index; i++) {
+            if (current.next == null) {
+                return;
+            }
+            if (current.next == remove) {
+                current.next = remove.next;
+                return;
+            }
+            current = current.next;
+        }
     }
 
     private class Node {

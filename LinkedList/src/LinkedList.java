@@ -1,47 +1,71 @@
-/*
- * Creating a single linked list from scratch.
+/**
+ * The Singly linked list class
  */
-public class LinkedList<AnyType> {
+class LinkedList {
     private Node head;
 
-    public LinkedList() {
+    /**
+     * Instantiates a new Linked list.
+     */
+    LinkedList() {
         this.head = null;
     }
 
-    public void addToStart(AnyType data) {
+    /**
+     * Add to the start of the linked list.
+     *
+     * @param data the data
+     */
+    void addToStart(Object data) {
         Node current = this.getFirst();
         this.head = new Node(data, current);
     }
 
-    public void addToEnd(AnyType data) {
+    /**
+     * Add to end of the linked list
+     *
+     * @param data the data
+     */
+    void addToEnd(Object data) {
         Node current = this.getLast();
         current.next = new Node(data, null);
     }
 
-    public Node getFirst() {
+    private Node getFirst() {
         return this.head;
     }
 
-    public Node getLast() {
+    private Node getLast() {
         Node current = head;
         while (current.next != null)
             current = current.next;
         return current;
     }
 
-    public Object getFirstElement() {
+    /**
+     * Gets the first element in the linked list.
+     *
+     * @return the first element
+     */
+    Object getFirstElement() {
         Node first = this.getFirst();
         return first.data;
     }
 
-    public Object getLastElement() {
+    /**
+     * Gets the last element in the linked list
+     *
+     * @return the last element
+     */
+    Object getLastElement() {
         Node last = this.getLast();
         return last.data;
     }
 
-    public Node get(int index) {
-        if (index <= 0)
+    private Node get(int index) {
+        if (index <= 0) {
             return null;
+        }
 
         Node current = this.head;
         for (int i = 1; i < index; i++) {
@@ -53,12 +77,27 @@ public class LinkedList<AnyType> {
         return current;
     }
 
-    public Object getData(int index) {
+    /**
+     * Gets the data from the linked list from an index.
+     *
+     * @param index the index
+     * @return the data
+     */
+    Object getData(int index) {
         Node current = this.get(index);
-        return current.data;
+        if (current != null) {
+            return current.data;
+        } else {
+            return null;
+        }
     }
 
-    public void remove(int index) {
+    /**
+     * Remove an element from the linked list by index.
+     *
+     * @param index the index
+     */
+    void remove(int index) {
         if (index <= 0) {
             return;
         }
@@ -77,14 +116,29 @@ public class LinkedList<AnyType> {
             current = current.next;
         }
     }
+}
 
-    private class Node {
-        private AnyType data; // The data that is stored in this node, can be any type.
-        private Node next; // The reference to the next node in the linked list.
+/**
+ * The type Node.
+ */
+class Node {
+    /**
+     * The data that is stored in this node, can be any type.
+     */
+    Object data;
+    /**
+     * The reference to the next node in the linked list.
+     */
+    Node next;
 
-        private Node(AnyType data, Node next) {
-            this.data = data;
-            this.next = next;
-        }
+    /**
+     * Instantiates a new Node.
+     *
+     * @param data the data
+     * @param next the next
+     */
+    Node(Object data, Node next) {
+        this.data = data;
+        this.next = next;
     }
 }

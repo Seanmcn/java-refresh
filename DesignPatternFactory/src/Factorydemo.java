@@ -1,9 +1,14 @@
 /**
- * Created by Sean on 2016-04-24.
+ * Factory Design Pattern demo.
  */
-public class FormatFactoryDemo {
+public class FactoryDemo {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
-        FormatFactory formatFactory = new FormatFactory();
+        Factory formatFactory = new Factory();
 
         Format json = formatFactory.getData("JSON");
 

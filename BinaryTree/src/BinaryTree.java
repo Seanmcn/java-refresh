@@ -1,7 +1,19 @@
+/**
+ * Basic Binary Tree
+ */
 class BinaryTree {
 
+    /**
+     * The Root.
+     */
     Node root;
 
+    /**
+     * Create node.
+     *
+     * @param key  the key
+     * @param data the data
+     */
     void createNode(int key, String data) {
         Node newNode = new Node(key, data);
 
@@ -40,32 +52,43 @@ class BinaryTree {
         }
     }
 
+    /**
+     * Gets node.
+     *
+     * @param key the key
+     * @return the node
+     */
     Node getNode(int key) {
         Node currentNode = root;
-        while(currentNode.key != key){
+        while (currentNode.key != key) {
 
             // Search left?
-            if(key < currentNode.key) {
+            if (key < currentNode.key) {
                 currentNode = currentNode.leftChild;
-            } else{
+            } else {
                 currentNode = currentNode.rightChild;
             }
 
             // Fail-safe in case the key doesn't exist
-            if(currentNode == null) {
+            if (currentNode == null) {
                 return null;
             }
         }
         return currentNode;
     }
 
+    /**
+     * Traverse and print.
+     * <p>
+     * https://en.wikipedia.org/wiki/Tree_traversal#Pre-order
+     * preOrder: starts with main node, cycles down on the left and then jumps up one parent at a time printing right.
+     * inOrder: starts with smallest child and works its way up always printing next lowest value.
+     * postOrder: starts with child on left, check left then right repeatedly.
+     *
+     * @param currentNode the current node
+     * @param type        the type
+     */
     void traverseAndPrint(Node currentNode, String type) {
-        /*
-         * https://en.wikipedia.org/wiki/Tree_traversal#Pre-order
-         * preOrder: starts with main node, cycles down on the left and then jumps up one parent at a time printing right.
-         * inOrder: starts with smallest child and works its way up always printing next lowest value.
-         * postOrder: starts with child on left, check left then right repeatedly.
-         */
         if (currentNode != null) {
             if (type.equals("preOrder")) {
                 System.out.println(currentNode);
@@ -83,13 +106,31 @@ class BinaryTree {
 
 }
 
+/**
+ * The Binary Tree Node.
+ */
 class Node {
+    /**
+     * The Key.
+     */
     int key;
     private String data;
 
+    /**
+     * The Left child.
+     */
     Node leftChild;
+    /**
+     * The Right child.
+     */
     Node rightChild;
 
+    /**
+     * Instantiates a new Node.
+     *
+     * @param key  the key
+     * @param data the data
+     */
     Node(int key, String data) {
         this.key = key;
         this.data = data;

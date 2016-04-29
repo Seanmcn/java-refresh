@@ -1,7 +1,12 @@
 /**
- * Demo for creating singly linked list.
+ *  Demo for creating a singly linked list.
  */
 public class LinkedListDemo {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
         list.addToStart("GETS DELETED"); // Should be removed [2]
